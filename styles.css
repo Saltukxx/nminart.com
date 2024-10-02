@@ -1,3 +1,15 @@
+/* Define your theme colors */
+:root {
+    --main-bg-color: #D3E9F6; /* Ice Water */
+    --accent-color: #8EAECF;  /* A complementary darker blue for accents */
+    --text-color: #333333;    /* Dark gray for readable text */
+    --link-color: #1B73BA;    /* Slightly darker blue for links */
+    --button-bg-color: #8EAECF; /* Button background color */
+    --button-hover-bg-color: #1B73BA; /* Button hover color */
+    --form-bg-color: rgba(255, 255, 255, 0.9); /* Form background */
+}
+
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +20,15 @@ body, html {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+    background: linear-gradient(to bottom, var(--main-bg-color), #ffffff);
     background-attachment: fixed;
     font-size: 16px;
 }
 
+/* Fullpage Section Styling */
 .fullpage-section {
     min-height: 100vh;
     display: flex;
@@ -33,10 +46,12 @@ body, html {
     transform: translateY(0);
 }
 
+/* Sections Styling */
 #logo-section, #gallery, #about, #contact {
     background-color: transparent;
 }
 
+/* Logo Styling */
 .logo-container {
     width: 100%;
     max-width: 80vw;
@@ -51,11 +66,12 @@ body, html {
     max-height: 80vh;
 }
 
+/* Header and Navigation Styling */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--form-bg-color);
     z-index: 1000;
     transition: top 0.3s;
 }
@@ -73,22 +89,25 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #007bff;
+    color: var(--link-color);
 }
 
+/* Headings Styling */
 h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
+/* Gallery Section Styling */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -115,6 +134,7 @@ h2 {
     transform: scale(1.05);
 }
 
+/* About Section Styling */
 #about {
     display: flex;
     flex-direction: column;
@@ -127,11 +147,12 @@ h2 {
     max-width: 800px;
     width: 90%;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--form-bg-color);
     padding: 2rem;
     border-radius: 8px;
 }
 
+/* Typed Text Styling */
 #typed-text {
     font-size: 1rem;
     line-height: 1.6;
@@ -150,12 +171,13 @@ h2 {
     100% { opacity: 1; }
 }
 
+/* Form Styling */
 form {
     width: 90%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--form-bg-color);
     padding: 2rem;
     border-radius: 8px;
 }
@@ -171,9 +193,10 @@ textarea {
     min-height: 150px;
 }
 
+/* Button Styling */
 button {
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: var(--button-bg-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -182,7 +205,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover-bg-color);
 }
 
 @keyframes pulse {
