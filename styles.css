@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+    background-attachment: fixed;
+    font-size: 16px;
+}
+
+.fullpage-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fullpage-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#logo-section, #gallery, #about, #contact {
+    background-color: transparent;
+}
+
+.logo-container {
+    width: 100%;
+    max-width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#animated-logo {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    transition: top 0.3s;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 1rem 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+#typed-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+#typed-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+form {
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+input, textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    body, html {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body, html {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .fullpage-section {
+        padding: 1rem;
+    }
+
+    .about-content, form {
+        padding: 1rem;
+    }
+}
