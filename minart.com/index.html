@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinArt Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#logo-section">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="logo-section" class="fullpage-section">
+            <div class="logo-container">
+                <img id="animated-logo" src="images/logo1.svg" alt="MinArt Logo">
+            </div>
+        </section>
+
+        <section id="gallery" class="fullpage-section">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="images/resim2.jpg" alt="Artwork 2">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim4.jpg" alt="Artwork 3">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim5.jpg" alt="Artwork 4">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim1.jpg" alt="Artwork 5">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim 3.jpg" alt="Artwork 6">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim6.jpg" alt="Artwork 7">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/resim7.jpg" alt="Artwork 8">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="fullpage-section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div id="typed-text"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="fullpage-section">
+            <h2>Contact</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
