@@ -379,4 +379,230 @@ document.querySelectorAll('[data-tilt]').forEach(element => {
     element.addEventListener('mouseleave', () => {
         element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
     });
-}); 
+});
+
+// Timeline animation
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            timelineObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+timelineItems.forEach(item => {
+    timelineObserver.observe(item);
+});
+
+// Add hover effect for timeline items
+document.querySelectorAll('.timeline-content').forEach(item => {
+    item.addEventListener('mouseenter', (e) => {
+        const icon = item.querySelector('.timeline-icon');
+        icon.style.transform = 'scale(1.1) rotate(5deg)';
+    });
+
+    item.addEventListener('mouseleave', (e) => {
+        const icon = item.querySelector('.timeline-icon');
+        icon.style.transform = 'scale(1) rotate(0)';
+    });
+});
+
+// Pricing Toggle
+const pricingToggle = document.getElementById('pricingToggle');
+const pricingCards = document.querySelectorAll('.pricing-card');
+const toggleLabels = document.querySelectorAll('.toggle-label');
+
+// Define the features for both basic and commercial packages
+const packageFeatures = {
+    starter: {
+        basic: [
+            'High-Resolution Character',
+            '2 Revision Rounds',
+            'Basic Commercial Rights'
+        ],
+        commercial: [
+            'High-Resolution Character',
+            '4 Revision Rounds',
+            'Full Commercial Rights',
+            'Source Files Included'
+        ]
+    },
+    popular: {
+        basic: [
+            '3 Character Designs',
+            '3 Revision Rounds',
+            'Expression Sheet',
+            'Full Commercial Rights'
+        ],
+        commercial: [
+            '3 Character Designs',
+            'Unlimited Revisions',
+            'Expression Sheet',
+            'Pose Sheet',
+            'Full Commercial Rights',
+            'Priority Support'
+        ]
+    }
+};
+
+// Function to update features with animation
+function updateFeatures(card, features) {
+    const featuresList = card.querySelector('.card-features');
+    featuresList.classList.add('fade');
+    
+    setTimeout(() => {
+        featuresList.innerHTML = `
+            <ul>
+                ${features.map(feature => `
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        ${feature}
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        featuresList.classList.remove('fade');
+    }, 300);
+}
+
+pricingToggle.addEventListener('change', () => {
+    const isCommercial = pricingToggle.checked;
+    
+    // Update toggle labels
+    toggleLabels.forEach((label, index) => {
+        label.classList.toggle('active', 
+            (index === 0 && !isCommercial) || (index === 1 && isCommercial)
+        );
+    });
+
+    // Update cards with staggered animation
+    pricingCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.toggle('show-commercial', isCommercial);
+            
+            if (!card.classList.contains('premium')) {
+                const cardType = card.classList.contains('starter') ? 'starter' : 'popular';
+                const features = isCommercial ? 
+                    packageFeatures[cardType].commercial : 
+                    packageFeatures[cardType].basic;
+                updateFeatures(card, features);
+            }
+        }, index * 150);
+    });
+});
+
+// Add hover and animation effects
+document.querySelectorAll('.pricing-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+
+// Add this animation to your styles
+const pricingStyle = document.createElement('style');
+pricingStyle.textContent = `
+    @keyframes fadeInRight {
+        from {
+            opacity: 0.5;
+            transform: translateX(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+`;
+document.head.appendChild(pricingStyle);
+
+// Testimonials animation
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+const testimonialObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Animate the quote icon
+            const quoteIcon = entry.target.querySelector('.quote-icon');
+            quoteIcon.style.animation = 'rotateIn 0.6s ease forwards';
+            
+            // Animate text
+            const text = entry.target.querySelector('.testimonial-text');
+            text.style.animation = 'fadeIn 0.6s ease forwards 0.2s';
+            
+            // Animate client info
+            const clientInfo = entry.target.querySelector('.client-info');
+            clientInfo.style.animation = 'slideInUp 0.6s ease forwards 0.4s';
+            
+            testimonialObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+testimonialCards.forEach(card => {
+    testimonialObserver.observe(card);
+});
+
+// Add hover effects for testimonial cards
+document.querySelectorAll('.testimonial-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        const quoteIcon = card.querySelector('.quote-icon');
+        quoteIcon.style.transform = 'scale(1.1) rotate(10deg)';
+        quoteIcon.style.opacity = '1';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        const quoteIcon = card.querySelector('.quote-icon');
+        quoteIcon.style.transform = 'scale(1) rotate(0)';
+        quoteIcon.style.opacity = '0.6';
+    });
+});
+
+// Add animations to your styles
+const testimonialStyle = document.createElement('style');
+testimonialStyle.textContent = `
+    @keyframes rotateIn {
+        from {
+            transform: rotate(-45deg);
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0);
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(testimonialStyle); 
