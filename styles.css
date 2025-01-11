@@ -2349,4 +2349,87 @@ footer {
     .nav-links {
         height: -webkit-fill-available;
     }
+}
+
+/* Process CTA Button Styles */
+.process-cta {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.animated-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(91, 167, 209, 0.2);
+}
+
+.animated-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(91, 167, 209, 0.3);
+    background: var(--primary-color);
+}
+
+.animated-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.animated-btn .arrow-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.3s ease;
+}
+
+.animated-btn:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+/* Add shine effect */
+.animated-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+}
+
+.animated-btn:hover::before {
+    left: 125%;
+}
+
+/* Mobile Adjustments for the Button */
+@media (max-width: 768px) {
+    .process-cta {
+        margin-top: 3rem;
+        padding: 0 1rem;
+    }
+
+    .animated-btn {
+        width: 100%;
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+    }
 } 
